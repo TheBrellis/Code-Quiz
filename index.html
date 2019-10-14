@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Coding Quiz</title>
 </head>
+<header>
+    <nav>
+        <p id='highScores'>View Highscores</p>
+        <p>Time: <span id='timer'>0</span></p>
+    </nav>
+</header>
+
 <body>
-    
+    <div id = 'homeScreen'>
+    <h1 id = 'title'>Coding Quiz</h1>
+    <p>Welcome to the Coding Quiz! Put your coding knowledge to the test by answering these simple (or are they
+        mwuahahaha) questions about writting code! Answer them correctly to get points. Answer enough correctly and you
+        may set the new highscore! But answer them wrong and you'll run out of time! Press start to begin. Good Luck! </p>
+    <button type = 'submit' id = 'startQuiz'>Start Quiz</submit>
+    </div>
+    <div id = 'question'></div>
+    <script type = 'text/javascript' src='questions.js'></script>
+    <script type = 'text/javascript' src='script.js'></script>
 </body>
+
 </html>
 
 <!-- Sudo Code:
