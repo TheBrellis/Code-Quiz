@@ -35,7 +35,8 @@ function timerStart() {
         , 1000);
 }
 
-function clearStart() { //method for removing node found on https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
+function clearStart() { 
+    //method for removing node found on https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
     var wipe = homeScreen.cloneNode(false); //creates an idential node that is false (blank)
     homeScreen.parentNode.replaceChild(wipe, homeScreen); // swaps the origional node for the blank node
 };
@@ -45,7 +46,7 @@ function startQuestions() {
     var title = document.createElement('h2');
     prompts.appendChild(title);
 
-    for (var i = 0; i < questions.length; i++) { // Looping through all of the questions to build the correct number of buttons and storing them with the corect index
+    for (var i = 0; i < questions.choices.length; i++) { // Looping through all of the questions to build the correct number of buttons and storing them with the corect index
 
         var x = document.createElement('button');
         //breaks here, need a way to creat a button element and append it to the title, resulting in multiple buttons. 
