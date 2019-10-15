@@ -42,23 +42,24 @@ function clearStart() {
 };
 
 function startQuestions() {
+    for (i=0; )
+    var numAnswers = questions[1].choices.length;  //adding a variable to determine number of buttons needed for answers, could loop this for varying number of answers. Would require this function be recalled for every question. 
     var prompts = document.querySelector('#prompts');
-    var title = document.createElement('h2');
-    prompts.appendChild(title);
+    var titleBlock = document.createElement('h2');
+    prompts.appendChild(titleBlock);
+    titleBlock.setAttribute('id','qTitle');
 
-    for (var i = 0; i < questions.choices.length; i++) { // Looping through all of the questions to build the correct number of buttons and storing them with the corect index
+    var qTitle = document.querySelector('#qTitle');
 
-        var x = document.createElement('button');
-        //breaks here, need a way to creat a button element and append it to the title, resulting in multiple buttons. 
-        // could possibly do this by adding the buttons to an unordered list? Would just need to build a list with an ID in the html...but would that be the same as this? Just with different elements? Could build list first and then add elements to it?
-        prompts.title.appendChild(x);
-        var z = prompts.title.x;
-        z.setAttribute('class', 'buttons');
-        z.setAttribute('data-index', [i]);
+    for (var i = 0; i < numAnswers ; i++) { // Looping through all of the questions to build the correct number of buttons and storing them with the corect index
+        var answers = document.createElement('buttons');
+        qTitle.appendChild(answers);
+        answers.setAttribute('data-index', i);
     }
-    console.log(x);
+
     var feedback = document.createElement('p');
     document.body.appendChild(feedback);
+    console.log(numAnswers)
 }
 
 //USE DATASET OBJECT WHEN ADDING VALUES TO BUTTONS
