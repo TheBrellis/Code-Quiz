@@ -41,25 +41,19 @@ function clearStart() {
     homeScreen.parentNode.replaceChild(wipe, homeScreen); // swaps the origional node for the blank node
 };
 
-function buildQuestion() {
+function nextQuestion() {
 
     var numChoices = questions[qCurrent].choices.length;  //adding a variable to determine number of buttons needed for answers, could loop this for varying number of answers. Would require this function be recalled for every question. 
-
     for (var i = 0; i < numChoices ; i++) { // Looping through all of the questions to build the correct number of buttons and storing them with the corect index
         var btns = document.createElement('buttons');
         choicesDiv.appendChild(btns);
         btns.setAttribute('data-index', i);
+        btns.setAttribute('data-type', 'choice')
+        btns.textContent = questions[qCurrent].choices.value[i];
     }
-}
-
-//function nextQuestion(){
-//var choices = document.querySelectorAll()
-//for (var i = 0; i < numChoices ; i++){
-
-//}
-
 
 }
+
 //USE DATASET OBJECT WHEN ADDING VALUES TO BUTTONS
 
 
