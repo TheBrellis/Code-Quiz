@@ -3,7 +3,7 @@
 var time = document.querySelector('#timer');
 var start = document.querySelector('#startQuiz');
 var homeScreen = document.querySelector('#homeScreen');
-
+var choicesDiv = document.querySelector('#choices');
 
 //Global variables
 var questions = [
@@ -18,8 +18,8 @@ var questions = [
         answer: 'parentheses'
     }
 ];
-var timeTotal = questions.length * 15;
-
+var timeTotal = questions.length * 15; //total time the quiz will run for
+var qCurrent = 0; // current question the quiz is referencing
 //Functions ----------------------------------------------------------------------------------------
 
 function timerStart() {
@@ -41,38 +41,36 @@ function clearStart() {
     homeScreen.parentNode.replaceChild(wipe, homeScreen); // swaps the origional node for the blank node
 };
 
-function startQuestions() {
-    for (i=0; )
-    var numAnswers = questions[1].choices.length;  //adding a variable to determine number of buttons needed for answers, could loop this for varying number of answers. Would require this function be recalled for every question. 
-    var prompts = document.querySelector('#prompts');
-    var titleBlock = document.createElement('h2');
-    prompts.appendChild(titleBlock);
-    titleBlock.setAttribute('id','qTitle');
+function buildQuestion() {
 
-    var qTitle = document.querySelector('#qTitle');
+    var numChoices = questions[qCurrent].choices.length;  //adding a variable to determine number of buttons needed for answers, could loop this for varying number of answers. Would require this function be recalled for every question. 
 
-    for (var i = 0; i < numAnswers ; i++) { // Looping through all of the questions to build the correct number of buttons and storing them with the corect index
-        var answers = document.createElement('buttons');
-        qTitle.appendChild(answers);
-        answers.setAttribute('data-index', i);
+    for (var i = 0; i < numChoices ; i++) { // Looping through all of the questions to build the correct number of buttons and storing them with the corect index
+        var btns = document.createElement('buttons');
+        choicesDiv.appendChild(btns);
+        btns.setAttribute('data-index', i);
     }
-
-    var feedback = document.createElement('p');
-    document.body.appendChild(feedback);
-    console.log(numAnswers)
 }
 
+//function nextQuestion(){
+//var choices = document.querySelectorAll()
+//for (var i = 0; i < numChoices ; i++){
+
+//}
+
+
+}
 //USE DATASET OBJECT WHEN ADDING VALUES TO BUTTONS
 
 
-//assign every possible answer an index, and then randomize the index so that they 'never' appear in the same order twice. Possibly build the indeces before and then reassign them using random numbers.
+
 
 //Series of User Events ----------------------------------------------------------
 
 start.addEventListener('click', function () {
     timerStart(); //method for calling multiple functions with a single event listener found on https://stackoverflow.com/questions/25028853/addeventlistener-two-functions
     clearStart();
-    startQuestions();
-    //  nextQuestion();
+    nextQuestion();
 });
-//correctAnswer.addEventListener('click', function())
+
+//assign an event for clicking any buttons, checks values, then gives feedback (for breif amount of time) and applys awards/penalties to counter, clears choicesDiv, then runs the nextQuestion
