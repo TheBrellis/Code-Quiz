@@ -36,8 +36,9 @@ function nextQuestion() {
         choicesDiv.appendChild(btns);
         btns.setAttribute('data-index', i);
         btns.setAttribute('data-type', 'choice');
-    //fix here, need to assign value to the btns 
-       // btns.textContent = questions[qCurrent].choices.value[i];
+        btns.setAttribute('type','submit')
+        btns.setAttribute('')
+        btns.textContent = questions[qCurrent].choices[i];
     }
 
 }

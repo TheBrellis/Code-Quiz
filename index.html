@@ -5,24 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Coding Quiz</title>
 </head>
-<header>
-    <nav>
-        <p id='highScores'>View Highscores</p>
-        <p>Time: <span id='timer'>0</span></p>
-    </nav>
-</header>
+
 
 <body>
+    <header>
+        <nav>
+            <p id='highScores'>View Highscores</p>
+            <p>Time: <span id='timer'>0</span></p>
+        </nav>
+    </header>
     <div id = 'homeScreen'>
-    <h1 id = 'title'>Coding Quiz</h1>
+    <h1 id = 'title' class = 'text center'>Coding Quiz</h1>
     <p>Welcome to the Coding Quiz! Put your coding knowledge to the test by answering these simple (or are they
         mwuahahaha) questions about writting code! Answer them correctly to get points. Answer enough correctly and you
         may set the new highscore! But answer them wrong and you'll run out of time! Press start to begin. Good Luck! </p>
     <button type = 'submit' id = 'startQuiz'>Start Quiz</submit>
     </div>
-    <div id = 'prompts'>
+    <div id = 'prompts' class = 'jumbotron'>
         <h2 id = 'qTitle'></h2>
         <div id ='choices'></div>
         <p id = 'feedback'></p>

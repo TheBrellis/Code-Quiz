@@ -5,7 +5,7 @@
         answer: 'alerts'
     },
     {
-        title: 'The conidtion in an if / else statment is enclosed within ____.',
+        title: 'The condition in an if / else statment is enclosed within ____.',
         choices: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
         answer: 'parentheses'
     }
