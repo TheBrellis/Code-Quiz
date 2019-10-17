@@ -1,23 +1,10 @@
 //Assigning Referencs and Importing Questions----------------------------------------------------
-//import questions from 'questions.js';
 var time = document.querySelector('#timer');
 var start = document.querySelector('#startQuiz');
 var homeScreen = document.querySelector('#homeScreen');
 var choicesDiv = document.querySelector('#choices');
 
 //Global variables
-var questions = [
-    {
-        title: 'Commonly used data types DO NOT include:',
-        choices: ['strings', 'booleans', 'alerts', 'numbers'],
-        answer: 'alerts'
-    },
-    {
-        title: 'The conidtion in an if / else statment is enclosed within ____.',
-        choices: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
-        answer: 'parentheses'
-    }
-];
 var timeTotal = questions.length * 15; //total time the quiz will run for
 var qCurrent = 0; // current question the quiz is referencing
 //Functions ----------------------------------------------------------------------------------------
@@ -48,8 +35,9 @@ function nextQuestion() {
         var btns = document.createElement('buttons');
         choicesDiv.appendChild(btns);
         btns.setAttribute('data-index', i);
-        btns.setAttribute('data-type', 'choice')
-        btns.textContent = questions[qCurrent].choices.value[i];
+        btns.setAttribute('data-type', 'choice');
+    //fix here, need to assign value to the btns 
+       // btns.textContent = questions[qCurrent].choices.value[i];
     }
 
 }
