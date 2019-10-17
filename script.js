@@ -37,7 +37,7 @@ function nextQuestion() {
         btns.setAttribute('data-index', i);
         btns.setAttribute('data-type', 'choice');
         btns.setAttribute('type','submit')
-        btns.setAttribute('')
+        btns.setAttribute('class','col-md-12')
         btns.textContent = questions[qCurrent].choices[i];
     }
 

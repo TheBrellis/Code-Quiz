@@ -8,62 +8,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Coding Quiz</title>
 </head>
-
-
 <body>
     <header>
-        <nav>
-            <p id='highScores'>View Highscores</p>
-            <p>Time: <span id='timer'>0</span></p>
+        <nav class ='nav bg-secondary'>
+            <p id='highScores' class = 'nav-item px-4 mx-4 align-baseline text-decoration-none text-dark'><a href = 'highscores.html'>View Highscores</a></p>
+            <h3>Time: <span id='timer' class ='nav-item text-center align-bottom'>0</span></h3>
         </nav>
     </header>
-    <div id = 'homeScreen'>
-    <h1 id = 'title' class = 'text center'>Coding Quiz</h1>
+    <div id = 'homeScreen' class ='container jumbotron'>
+    <div class ='row text-center'>
+    <h1 id = 'title'>Coding Quiz</h1>
+    </div>
+    <div class = 'row text-center'>
     <p>Welcome to the Coding Quiz! Put your coding knowledge to the test by answering these simple (or are they
         mwuahahaha) questions about writting code! Answer them correctly to get points. Answer enough correctly and you
         may set the new highscore! But answer them wrong and you'll run out of time! Press start to begin. Good Luck! </p>
-    <button type = 'submit' id = 'startQuiz'>Start Quiz</submit>
     </div>
-    <div id = 'prompts' class = 'jumbotron'>
-        <h2 id = 'qTitle'></h2>
-        <div id ='choices'></div>
-        <p id = 'feedback'></p>
+    <div class = 'row text-center'>
+        <button type = 'submit' id = 'startQuiz' class = 'btn-primary p-2 col-3-md text-center'>Start Quiz</submit>
+    </div>
+    </div>
+    <div id = 'prompts' class = 'container'>
+        <div class ='row'>
+        <h2 id = 'qTitle' class ='col-md-12'></h2>
+        </div>
+        <div id ='choices' class ='row'></div>
+        <div class ='row'>
+        <p id = 'feedback' class ='col-md-12'></p>
+        </div>
     </div>
     <script type = 'text/javascript' src='questions.js'></script>
     <script type = 'text/javascript' src='script.js'></script>
 </body>
 
 </html>
-
-<!-- Sudo Code:
-Home screen, navigation bar for see high scores and timer (timer counter starts at zero)
-start button div in center of screen
-when start button is clicked
-    - div is created for h2 tag (title)
-    - div is created for all 4 answers (data-index)
-    -timer starts, based on total number of questions
-    when answer is clicked
-        -if question answer correct (alert user with p tag)
-            - score ++
-        -else 
-            -timer minus 15 seconds (alert user with p tag)
-    then change out the information in the appropraite spans with the next question
-when all questions have been answered
-    - replace divs with one showing highscore and with a form for them to enter their initials (preventDefault)
-- add div with highscore and initals to the view highscores list
-add button to highscores list to clear all high scores.
-
-... 
-...
-...
-
-..profit
     
-
-
-
-
-
-
-
--->
