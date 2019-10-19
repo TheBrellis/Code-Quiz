@@ -26,11 +26,11 @@ function timerStart() {
 }
 
 function nextQuestion() {
-
     qPrompts.setAttribute('class', 'container jumbotron my-4 py-2')
+    // removes buttons from previous question
+    choicesDiv.innerHTML = '';
     var numChoices = questions[qCurrent].choices.length;  
-    
-    //building buttons for the choices
+    //building new buttons
     for (var i = 0; i < numChoices ; i++) { 
         var qChoices = document.createElement('buttons');
         choicesDiv.appendChild(qChoices);
@@ -46,20 +46,25 @@ function nextQuestion() {
    qButtons.forEach(choice => {
        choice.addEventListener('click', function(event){
            checkAnswer();
+           qCurrent++;
+           nextQuestion();
        })
    })
 };
 
 function checkAnswer() {
-    // if the value of the target that is clicked equals the value presented in the answer key
+    //gives feedback from previous answer and applies penalty if needed
+
+ //   setInterval(function(){ //set interval example per the Speed Reader Class Activity
     if (event.target.textContent === questions[qCurrent].answer){
-     qFeedback.textContent = 'Correct!'; //change text content of feedback to correct
+     qFeedback.textContent = 'Correct!';
     } else{
         qFeedback.textContent = 'Wrong!';
+        timeTotal = timeTotal - 15;
     }
-    //qFeedback.textContent = 'False you fail!';
-   // timeTotal = timeTotal - 15;
-
+    setTimeout(function(){
+        qFeedback.textContent = '';
+    },1000);
 };
 
 //USE DATASET OBJECT WHEN ADDING VALUES TO BUTTONS
@@ -69,7 +74,7 @@ function checkAnswer() {
 
 start.addEventListener('click', function () {
     timerStart(); //method for calling multiple functions with a single event listener found on https://stackoverflow.com/questions/25028853/addeventlistener-two-functions
-    homeScreen.parentNode.removeChild(homeScreen);
+    homeScreen.parentNode.removeChild(homeScreen); //aight imma head out
     nextQuestion();
     });
 
