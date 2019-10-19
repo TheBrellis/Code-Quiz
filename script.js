@@ -3,9 +3,8 @@ var time = document.querySelector('#timer');
 var start = document.querySelector('#startQuiz');
 var homeScreen = document.querySelector('#homeScreen');
 var choicesDiv = document.querySelector('#choices');
-
-// pretty sure this query call is broken-------------
-var qButtons = document.querySelectorAll('{data-type: choice}')
+var qPrompts = document.querySelector('#prompts');
+var qButtons = document.querySelectorAll('[data-type]')
 var qTitle = document.querySelector('#qTitle');
 var qFeedback = document.querySelector('#feedback');
 
@@ -28,14 +27,9 @@ function timerStart() {
         , 1000);
 }
 
-function clearStart() { 
-    //method for removing node found on https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
-    var wipe = homeScreen.cloneNode(false); //creates an idential node that is false (blank)
-    homeScreen.parentNode.replaceChild(wipe, homeScreen); // swaps the origional node for the blank node
-};
+
 
 function nextQuestion() {
-
     var numChoices = questions[qCurrent].choices.length;  //adding a variable to determine number of buttons needed for answers, could loop this for varying number of answers. Would require this function be recalled for every question. 
     
     for (var i = 0; i < numChoices ; i++) { // Looping through all of the questions to build the correct number of buttons and storing them with the corect index
@@ -44,7 +38,7 @@ function nextQuestion() {
         qChoices.setAttribute('data-index', i); //may not need this?
         qChoices.setAttribute('data-type', 'choice');
         qChoices.setAttribute('type','submit')
-        qChoices.setAttribute('class','col-md-12')
+        qChoices.setAttribute('class','col-md-6 btn-primary text-center m-2 ')
         qChoices.textContent = questions[qCurrent].choices[i];
     }
     qTitle.textContent = questions[qCurrent].title;
@@ -68,24 +62,17 @@ function checkAnswer() {
 
 //USE DATASET OBJECT WHEN ADDING VALUES TO BUTTONS
 
-/*Commit notes
-- updated nextQuestion() to include the title of the current question
-- created click event for all of the button with data-index 'choice'
-- click event calls for the answer to be checked (checkAnswer() created) then moves on to the next questions
-
-*/
-
 
 //Series of User Events ----------------------------------------------------------
 
 start.addEventListener('click', function () {
     timerStart(); //method for calling multiple functions with a single event listener found on https://stackoverflow.com/questions/25028853/addeventlistener-two-functions
-    clearStart();
+    homeScreen.parentNode.removeChild(homeScreen);
     nextQuestion();
 });
 
 //assign an event for clicking any buttons, checks values, then gives feedback (for breif amount of time) and applys awards/penalties to counter, clears choicesDiv, then runs the nextQuestion
-qButtons.addEventListener('click', function(event) {
+qButtons.addEventListener('click', function() {
     checkAnswer();
     nextQuestion();
 });
