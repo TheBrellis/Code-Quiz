@@ -108,13 +108,29 @@ function quizComplete(){
     submitScoreEl.textContent = 'Submit Your Score!';
     nameDiv.appendChild(submitScoreEl);
 
+    var refreshQuizEl = document.createElement('button');
+    refreshQuizEl.setAttribute('type', 'submit');
+    refreshQuizEl.setAttribute('id', 'refreshQuiz');
+    refreshQuizEl.setAttribute('class', 'btn btn-primary my-2 d-none');
+    refreshQuizEl.textContent = 'Try Again!';
+    nameDiv.appendChild(refreshQuizEl);
 
+// Adding Event Listeners for quizComplete Screen ---------
     var submitScore = document.querySelector('#submitScore');
     submitScore.addEventListener('click', function(event){
         event.preventDefault();
         submitCurrentScore(nameInputEl.value, score)
+        refreshQuiz.setAttribute('class', 'btn btn-primary m-2');
         });
+// -----------------------------
+    var refreshQuiz = document.querySelector('#refreshQuiz');
+    refreshQuiz.addEventListener('click', function(event){
+        event.preventDefault();
+        location.reload();
+    })
 };
+
+
 function submitCurrentScore (user, highscore){
 
     var currentScore = {
@@ -146,8 +162,6 @@ function submitCurrentScore (user, highscore){
 //-------------
     highscoresJSON = JSON.stringify(highscores);
     localStorage.setItem('highscores', highscoresJSON);
-
-    document.querySelector('#userName').value = '';
 }
 
 // Starting the Quiz--------------
