@@ -4,13 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Highscores</title>
 </head>
-<body>
-    <h1>High Scores</h1>
+<body> 
+    <header>
+            <nav class='nav bg-secondary py-2'>
+                <!-- Putting class attr in the a tag was a tip from stack overflow-->
+                <p id='highScores' class='px-4 mx-4 text-decoration-none'><a class='text-dark' href='index.html'></a></p>
+            </nav>
+    </header>
+    <div id='homeScreen' class='container jumbotron col-md-8 my-4 py-2'>
+    <div class='row'>
+        <h1 id='title'>Highscores</h1>
+    </div>
+    <hr>
+    <div id= 'scoresTable' class='row'>
 
-    <button type ='button' id ='returnHome'>Go Back</button>
-    <button type = 'button' id ='clearAll'>Clear HighScores</button>
+    </div>
     
+    <div class='row text-center text-dark'>
+        <button id='quizReturn' class='btn-primary p-2 col-md-3 text-dark rounded'><a class='text-dark text-decoration-none' href='index.html'>Return to Quiz</a></button>
+        <button type='submit' id='clearScores' class='btn-primary p-2 col-md-3 rounded mx-2'>Clear</button>
+    </div>
+</div>
 </body>
 </html>

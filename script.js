@@ -12,7 +12,7 @@ var feedbackDiv = document.querySelector('#feedbackDiv');
 var timeTotal = questions.length * 15; //total time the quiz will run for
 time.textContent = timeTotal;
 var qCurrent = 0; // current question the quiz is referencing
-
+var highscores = [];
 
 //Functions ----------------------------------------------------------------------------------------
 
@@ -112,19 +112,21 @@ function quizComplete(){
 
     var submitScore = document.querySelector('#submitScore');
 
-   submitScore.addEventListener('click', function(){
+submitScore.addEventListener('click', function(){
+    var currentScore = {
+        userName: nameInputEl.value,
+        score: score
+    };
 
+    console.log(currentScore);
     var highscoresJSON = localStorage.getItem('highscores');
     highscores = JSON.parse(highscoresJSON);
-    highscores.userName.push(nameInputEl.value);
-    highscores.score.push(score);
 
-    highscoresJSON = JSON.stringify(highscores);
-    localStorage.setItem('highscores', highscoresJSON);
+    //highscores.push(currentScore);
+    //highscoresJSON = JSON.stringify(highscores);
+    //localStorage.setItem('highscores', highscoresJSON);
 
-        console.log(highscores);
-        console.log(highscoresJSON);
-        nameInputEl.textContent = '';
+    nameInputEl.value = '';
 
     });
 
