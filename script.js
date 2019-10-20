@@ -140,11 +140,11 @@ function submitCurrentScore (user, highscore){
 //------------
     var highscoresJSON = localStorage.getItem('highscores')
     if (highscoresJSON){
-        highscores = JSON.parse(highscoresJSON);
-        x = 0;
+       var highscores = JSON.parse(highscoresJSON);
+       var x = 0;
     } else {
-        highscores = [];
-        x = 1; // indentifier for when the highscores array is being created for the first time
+        var highscores = [];
+        var x = 1; // indentifier for when the highscores array is being created for the first time
     }
     if (x === 1) {
         highscores.push(currentScore);
@@ -153,7 +153,7 @@ function submitCurrentScore (user, highscore){
     }else{
         for (var i = 0; i < highscores.length; i++){
             if (currentScore.score >= highscores[i].score){
-                highscores.splice(i , 1 , currentScore);
+                highscores.splice(i , 0 , currentScore);
                 break;
             };
         };

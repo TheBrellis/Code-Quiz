@@ -20,7 +20,7 @@
         <h1 id='title'>Highscores</h1>
     </div>
     <hr>
-    <div id= 'scoresTable' class='row'>
+    <div class='row'>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -29,7 +29,7 @@
                 <th scope="col">Score</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id='tableInfo'>
                 <tr>
                 <th scope="row">1</th>
                 <td>Mark</td>
@@ -51,9 +51,11 @@
     </div>
     
     <div class='row text-center text-dark'>
-        <button id='quizReturn' class='btn-primary p-2 col-md-3 rounded'>Return to Quiz</button>
-        <button type='submit' id='clearScores' class='btn-primary p-2 col-md-3 rounded mx-2'>Clear</button>
+        <button type ='submit' id='quizReturn' class='btn-primary p-2 col-md-3 rounded m-2'>Return to Quiz</button>
+        <button type='submit' id='clearScores' class='btn-danger p-2 col-md-3 rounded m-2'>Clear</button>
     </div>
+    
 </div>
+<script type='text/javascript' src='highscores.js'></script>
 </body>
 </html>
