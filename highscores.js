@@ -4,8 +4,8 @@ var scoresTableDiv = document.querySelector('#scoresTable');
 var clearScores = document.querySelector('#clearScores');
 
 // Globals
-
-
+var highscoresJSON = localStorage.getItem('highscores')
+highscores = JSON.parse(highscoresJSON);
 
 /*
 function buildScores(){
