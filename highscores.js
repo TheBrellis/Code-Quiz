@@ -3,10 +3,7 @@ var tableInfoEl = document.querySelector('#tableInfo');
 var clearScores = document.querySelector('#clearScores');
 var quizReturn = document.querySelector('#quizReturn');
 
-// var quizReturn = document.querySelector('#quizReturn');
-
-
-// Globals
+// Globals ---------------------------------------------
 var highscoresJSON = localStorage.getItem('highscores')
 if (highscoresJSON){
    var  highscores = JSON.parse(highscoresJSON);
@@ -17,23 +14,30 @@ if (highscoresJSON){
 }
 
 // Building Highscores table ----------------------------------------------------------
+buildScores();
 
 function buildScores(){
 
     tableInfoEl.innerHTML = '';
-    console.log('hello');
-   /*
-    for (var i = 0; i < highscores ; i++) { 
-        var qChoices = document.createElement('buttons');
+    
+    for (var i = 0; i < highscores.length ; i++) { 
 
+        var rowEl = document.createElement('tr');
+        tableInfoEl.appendChild(rowEl);
 
-        choicesDiv.appendChild(qChoices);
-        qChoices.setAttribute('data-type', 'choice');
-        qChoices.setAttribute('type','submit');
-        qChoices.setAttribute('class','col-md-6 d-block text-center btn-primary rounded m-2 p-2');
-        qChoices.textContent = questions[qCurrent].choices[i];
+            var indexEl = document.createElement('th');
+            rowEl.appendChild(indexEl);
+            indexEl.setAttribute('scope','row');
+            indexEl.textContent = i + 1;
+
+            var userEl = document.createElement('td');
+            rowEl.appendChild(userEl);
+            userEl.textContent = highscores[i].userName;
+
+            var scoreEl = document.createElement('td');
+            rowEl.appendChild(scoreEl);
+            scoreEl.textContent = highscores[i].score;
     }
-    */
 };
 
 // Click Events -------------------------
