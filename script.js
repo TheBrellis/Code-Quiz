@@ -7,11 +7,13 @@ var qPrompts = document.querySelector('#prompts');
 var qTitle = document.querySelector('#qTitle');
 var qFeedback = document.querySelector('#feedback');
 var feedbackDiv = document.querySelector('#feedbackDiv');
+
 //Global variables
 var timeTotal = questions.length * 15; //total time the quiz will run for
 time.textContent = timeTotal;
 var qCurrent = 0; // current question the quiz is referencing
-var x = '';
+
+
 //Functions ----------------------------------------------------------------------------------------
 
 function timerStart() {
@@ -80,35 +82,56 @@ function checkAnswer() {
 function quizComplete(){
 
     time.textContent = timeTotal;
-
+    var score = timeTotal;
     choicesDiv.innerHTML = ''; //removing buttons from last question run
     qTitle.textContent = 'Quiz Complete'
     qTitle.setAttribute('class', 'col-md-12 text-center');
     var scoreReport = document.createElement('p');
     scoreReport.setAttribute('class', 'col-md-12 text-center');
     choicesDiv.appendChild(scoreReport);
-    scoreReport.textContent = 'Your Score is: ' + timeTotal + '!';
+    scoreReport.textContent = 'Your Score is: ' + score + '!';
 
     var nameDiv = document.createElement('div');
     nameDiv.setAttribute('class', 'row form-group');
     nameDiv.setAttribute('id', 'nameDiv');
     prompts.insertBefore(nameDiv, feedbackDiv);
 
-    var nameInput = document.createElement('input');
-    nameInput.setAttribute('class', 'form-control');
-    nameInput.setAttribute('id', 'userName');
-    nameInput.setAttribute('placeholder','Enter Your Name!');
-    nameDiv.appendChild(nameInput);
+    var nameInputEl = document.createElement('input');
+    nameInputEl.setAttribute('class', 'form-control');
+    nameInputEl.setAttribute('id', 'userName');
+    nameInputEl.setAttribute('placeholder','Enter Your Name!');
+    nameDiv.appendChild(nameInputEl);
 
-    var submitScore = document.createElement('button');
-    submitScore.setAttribute('type', 'submit');
-    submitScore.setAttribute('id', 'submitScore');
-    submitScore.setAttribute('class', 'btn btn-success my-2');
-    submitScore.textContent = 'Submit Your Score!';
-    nameDiv.appendChild(submitScore);
+    var submitScoreEl = document.createElement('button');
+    submitScoreEl.setAttribute('type', 'submit');
+    submitScoreEl.setAttribute('id', 'submitScore');
+    submitScoreEl.setAttribute('class', 'btn btn-success my-2');
+    submitScoreEl.textContent = 'Submit Your Score!';
+    nameDiv.appendChild(submitScoreEl);
+
+
+    var submitScore = document.querySelector('#submitScore');
+
+   submitScore.addEventListener('click', function(){
+
+    var highscoresJSON = localStorage.getItem('highscores');
+    highscores = JSON.parse(highscoresJSON);
+    highscores.userName.push(nameInputEl.value);
+    highscores.score.push(score);
+
+    highscoresJSON = JSON.stringify(highscores);
+    localStorage.setItem('highscores', highscoresJSON);
+
+        console.log(highscores);
+        console.log(highscoresJSON);
+        nameInputEl.textContent = '';
+
+    });
+
+
 }
 
-//Series of User Events ----------------------------------------------------------
+// Starting the Quiz--------------
 
 start.addEventListener('click', function () {
     timerStart(); //method for calling multiple functions with a single event listener found on https://stackoverflow.com/questions/25028853/addeventlistener-two-functions
