@@ -7,10 +7,8 @@ var quizReturn = document.querySelector('#quizReturn');
 var highscoresJSON = localStorage.getItem('highscores')
 if (highscoresJSON){
    var  highscores = JSON.parse(highscoresJSON);
-    x = 0;
 } else {
    var highscores = [];
-    x = 1; // indentifier for when the highscores array is being created for the first time
 }
 
 // Building Highscores table ----------------------------------------------------------
@@ -44,7 +42,7 @@ function buildScores(){
 
 clearScores.addEventListener('click', function(e){
     e.preventDefault();
-    if(confirm("You're About to Delete Your HighScores! Continue?")){
+    if(confirm("You're About to Delete Your Highscores! Continue?")){
         highscores = [];
         localStorage.setItem('highscores',highscores);
         buildScores();
