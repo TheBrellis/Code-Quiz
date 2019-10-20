@@ -6,7 +6,7 @@ var choicesDiv = document.querySelector('#choices');
 var qPrompts = document.querySelector('#prompts');
 var qTitle = document.querySelector('#qTitle');
 var qFeedback = document.querySelector('#feedback');
-var results = document.querySelector('#results');
+var feedbackDiv = document.querySelector('#feedbackDiv');
 //Global variables
 var timeTotal = questions.length * 15; //total time the quiz will run for
 time.textContent = timeTotal;
@@ -84,18 +84,28 @@ function quizComplete(){
     choicesDiv.innerHTML = ''; //removing buttons from last question run
     qTitle.textContent = 'Quiz Complete'
     qTitle.setAttribute('class', 'col-md-12 text-center');
-
     var scoreReport = document.createElement('p');
+    scoreReport.setAttribute('class', 'col-md-12 text-center');
     choicesDiv.appendChild(scoreReport);
     scoreReport.textContent = 'Your Score is: ' + timeTotal + '!';
 
-    var initials = document.createElement('form',{id: 'initials', class: 'col-md-6'});
-    initials.textContent = 'Your Name Here:'
-    var submitScore = document.createElement('button',{type: 'submit', id: 'submitScore', class: 'btn-success p-2 col-md-3 rounded'});
-    submitScore.textConent = 'Submit Score!';
-    results.appendChild(initials);
-    results.appendChild(submitScore);
+    var nameDiv = document.createElement('div');
+    nameDiv.setAttribute('class', 'row form-group');
+    nameDiv.setAttribute('id', 'nameDiv');
+    prompts.insertBefore(nameDiv, feedbackDiv);
 
+    var nameInput = document.createElement('input');
+    nameInput.setAttribute('class', 'form-control');
+    nameInput.setAttribute('id', 'userName');
+    nameInput.setAttribute('placeholder','Enter Your Name!');
+    nameDiv.appendChild(nameInput);
+
+    var submitScore = document.createElement('button');
+    submitScore.setAttribute('type', 'submit');
+    submitScore.setAttribute('id', 'submitScore');
+    submitScore.setAttribute('class', 'btn btn-success my-2');
+    submitScore.textContent = 'Submit Your Score!';
+    nameDiv.appendChild(submitScore);
 }
 
 //Series of User Events ----------------------------------------------------------

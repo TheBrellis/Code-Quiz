@@ -5,41 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Coding Quiz</title>
 </head>
+
 <body>
     <header>
-        <nav class ='nav bg-secondary'>                                             <!-- Putting class attr in the a tag was a tip from stack overflow-->
-            <p id='highScores' class = 'px-4 mx-4 text-decoration-none'><a class = 'text-dark' href = 'highscores.html'>View Highscores</a></p>
-            <h3>Time: <span id='timer' class ='nav-item text-center align-bottom'>0</span></h3>
+        <nav class='nav bg-secondary'>
+            <!-- Putting class attr in the a tag was a tip from stack overflow-->
+            <p id='highScores' class='px-4 mx-4 text-decoration-none'><a class='text-dark' href='highscores.html'>View
+                    Highscores</a></p>
+            <h3>Time: <span id='timer' class='nav-item text-center align-bottom'>0</span></h3>
         </nav>
     </header>
-    <div id = 'homeScreen' class ='container jumbotron col-md-8 my-4 py-2'>
-        <div class ='row'>
-            <h1 id = 'title'>Coding Quiz</h1>
+    <div id='homeScreen' class='container jumbotron col-md-8 my-4 py-2'>
+        <div class='row'>
+            <h1 id='title'>Coding Quiz</h1>
         </div>
-        <div class = 'row'>
+        <div class='row'>
             <p>Welcome to the Coding Quiz! Put your coding knowledge to the test by answering these simple (or are they
-        mwuahahaha) questions about writting code! Answer the questions qucily to get more points! If you're quick enough you
-        may set the new highscore! But answer them wrong and you'll run out of time! Press <strong>Start Quiz</strong> to begin.<br> Good Luck! </p>
-    </div>
-
-    <div class = 'row text-center'>
-        <button type = 'submit' id = 'startQuiz' class = 'btn-primary p-2 col-md-3 rounded'>Start Quiz</submit>
-    </div>
-    </div>
-    <div id = 'prompts' class = 'container'>
-        <div class ='row'>
-        <h2 id = 'qTitle' class ='col-md-12'></h2>
+                mwuahahaha) questions about writting code! Answer the questions qucily to get more points! If you're
+                quick enough you
+                may set the new highscore! But answer them wrong and you'll run out of time! Press <strong>Start
+                    Quiz</strong> to begin.<br> Good Luck! </p>
         </div>
-        <div id ='choices' class ='row d-block text-center'></div>
-        <div id ='results' class ='row'>
-        <p id = 'feedback' class ='col-md-12'></p>
+
+        <div class='row text-center'>
+            <button type='submit' id='startQuiz' class='btn-primary p-2 col-md-3 rounded'>Start Quiz</submit>
+        </div>
     </div>
-    <script type = 'text/javascript' src='questions.js'></script>
-    <script type = 'text/javascript' src='script.js'></script>
+    <div id='prompts' class='container'>
+        <div class='row'>
+            <h2 id='qTitle' class='col-md-12'></h2>
+        </div>
+        <div id='choices' class='row'>
+        </div>
+        <div id = 'feedbackDiv' class='row'>
+            <p id='feedback' class='col-md-12'></p>
+        </div>
+    </div>
+<script type='text/javascript' src='questions.js'></script>
+<script type='text/javascript' src='script.js'></script>
 </body>
 
 </html>
-    

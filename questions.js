@@ -7,6 +7,6 @@
     {
         title: 'The condition in an if / else statment is enclosed within ____.',
         choices: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'],
-        answer: 'parentheses'
+        answer: 'parenthesis'
     }
 ]
