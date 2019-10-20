@@ -8,24 +8,30 @@ var qTitle = document.querySelector('#qTitle');
 var qFeedback = document.querySelector('#feedback');
 var results = document.querySelector('#results');
 //Global variables
-var timeTotal = 5// questions.length * 15; //total time the quiz will run for
+var timeTotal = questions.length * 15; //total time the quiz will run for
+time.textContent = timeTotal;
 var qCurrent = 0; // current question the quiz is referencing
+var x = '';
 //Functions ----------------------------------------------------------------------------------------
 
 function timerStart() {
-    time.textContent = timeTotal;
+    
     var timerInterval = setInterval(function () {
-        if (timeTotal === 0) {
-            return;
-        } else {
+        if (timeTotal === 0 || (qCurrent >= questions.length)) {
+            clearInterval(timerInterval);
+            quizComplete();
+        } else{
             timeTotal--;
             time.textContent = timeTotal;
         }
-    }
-        , 100);
+    }, 1000);
 }
 
 function nextQuestion() {
+    
+    if (qCurrent >= questions.length){ //stops nextQuestion from running when there is no question data
+        return;
+    }
     qPrompts.setAttribute('class', 'container jumbotron col-md-8 my-4 py-2')
     // removes buttons from previous question
     choicesDiv.innerHTML = '';
@@ -40,38 +46,44 @@ function nextQuestion() {
         qChoices.textContent = questions[qCurrent].choices[i];
     }
     qTitle.textContent = questions[qCurrent].title;
-  //  updated eventListener in nextQuestion function to checkAnswer(), iterate qCurrent, and run nextQuestio
-    //n. checkAnswer now gives feedback for 1 seconds and then disappears. 
+
     //Adding Event Listeners for Buttons within the nextQuestion function (buttons don't exist until this function is run)
    qButtons = document.querySelectorAll('[data-type]');
+
    qButtons.forEach(choice => {
        choice.addEventListener('click', function(event){
-           checkAnswer();
-           qCurrent++;
-           nextQuestion();
-       })
-   })
-};
+            checkAnswer();
+            qCurrent++;
+            nextQuestion();
+           });
+       });
+   };
+
 
 function checkAnswer() {
-    //gives feedback from previous answer and applies penalty if needed
 
- //   setInterval(function(){ //set interval example per the Speed Reader Class Activity
     if (event.target.textContent === questions[qCurrent].answer){
      qFeedback.textContent = 'Correct!';
     } else{
         qFeedback.textContent = 'Wrong!';
+        if (timeTotal > 15){
         timeTotal = timeTotal - 15;
+        } else {
+            timeTotal = 0;
+            time.textContent = timeTotal;
+        }
     }
-    setTimeout(function(){
-        qFeedback.textContent = '';
-    },1000);
+    setTimeout(function(){ qFeedback.textContent = ''} , 1000);
+
 };
 
 function quizComplete(){
 
-    choicesDiv.innerHTML = ''; //removing buttons that may exist
-    qTitle.textConent = 'Quiz Complete!'
+    time.textContent = timeTotal;
+
+    choicesDiv.innerHTML = ''; //removing buttons from last question run
+    qTitle.textContent = 'Quiz Complete'
+    qTitle.setAttribute('class', 'col-md-12 text-center');
 
     var scoreReport = document.createElement('p');
     choicesDiv.appendChild(scoreReport);
@@ -81,14 +93,10 @@ function quizComplete(){
     initials.textContent = 'Your Name Here:'
     var submitScore = document.createElement('button',{type: 'submit', id: 'submitScore', class: 'btn-success p-2 col-md-3 rounded'});
     submitScore.textConent = 'Submit Score!';
-    results.appendChil(initials);
+    results.appendChild(initials);
     results.appendChild(submitScore);
 
 }
-    
-
-//USE DATASET OBJECT WHEN ADDING VALUES TO BUTTONS
-
 
 //Series of User Events ----------------------------------------------------------
 
@@ -97,7 +105,3 @@ start.addEventListener('click', function () {
     homeScreen.parentNode.removeChild(homeScreen); //aight imma head out
     nextQuestion();
     });
-
-
-//assign an event for clicking any buttons, checks values, then gives feedback (for breif amount of time) and applys awards/penalties to counter, clears choicesDiv, then runs the nextQuestion
-
