@@ -65,8 +65,14 @@ function checkAnswer() {
 
     if (event.target.textContent === questions[qCurrent].answer){
      qFeedback.textContent = 'Correct!';
+      // technique for triggering audio per stack overflow : https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
+      var audio = new Audio('audioFiles/michealScottYes.mp3'); // sets variable for audio file, identifies it as audio element and provides source
+      audio.play(); //triggers audio to play
     } else{
         qFeedback.textContent = 'Wrong!';
+        // technique for triggering audio per stack overflow : https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
+        var audio = new Audio('audioFiles/michealScottNo.mp3'); // sets variable for audio file, identifies it as audio element and provides source
+        audio.play(); //triggers audio to play
         if (timeTotal > 15){
         timeTotal = timeTotal - 15;
         } else {
