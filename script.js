@@ -110,29 +110,44 @@ function quizComplete(){
 
 
     var submitScore = document.querySelector('#submitScore');
+    submitScore.addEventListener('click', function(event){
+        event.preventDefault();
+        submitCurrentScore(nameInputEl.value, score)
+        });
+};
+function submitCurrentScore (user, highscore){
 
-submitScore.addEventListener('click', function(){
     var currentScore = {
-        userName: nameInputEl.value,
-        score: score
+        userName: user,
+        score: highscore
     };
 //------------
     var highscoresJSON = localStorage.getItem('highscores')
     if (highscoresJSON){
         highscores = JSON.parse(highscoresJSON);
+        x = 0;
     } else {
         highscores = [];
+        x = 1; // indentifier for when the highscores array is being created for the first time
     }
-    highscores.push(currentScore);
+    if (x === 1) {
+        highscores.push(currentScore);
+    } else if (currentScore.score <= highscores[highscores.length - 1].score){
+        highscores.push(currentScore);
+    }else{
+        for (var i = 0; i < highscores.length; i++){
+            if (currentScore.score >= highscores[i].score){
+                highscores.splice(i , 1 , currentScore);
+                break;
+            };
+        };
+    };
+   
 //-------------
     highscoresJSON = JSON.stringify(highscores);
     localStorage.setItem('highscores', highscoresJSON);
 
-    nameInputEl.value = '';
-
-    });
-
-
+    document.querySelector('#userName').value = '';
 }
 
 // Starting the Quiz--------------

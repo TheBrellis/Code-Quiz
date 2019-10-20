@@ -7,14 +7,17 @@ var clearScores = document.querySelector('#clearScores');
 var highscoresJSON = localStorage.getItem('highscores')
 highscores = JSON.parse(highscoresJSON);
 
-/*
+// Sorting the highScores from largest to smallest
+
+
 function buildScores(){
 
     scoresTableDiv.innerHTML = '';
-    var numScores = highScores[sCurrent].userName.length;  
-    //building new buttons
-    for (var i = 0; i < numChoices ; i++) { 
+   
+    for (var i = 0; i < highscores ; i++) { 
         var qChoices = document.createElement('buttons');
+
+        
         choicesDiv.appendChild(qChoices);
         qChoices.setAttribute('data-type', 'choice');
         qChoices.setAttribute('type','submit');
