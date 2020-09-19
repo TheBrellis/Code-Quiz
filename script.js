@@ -67,11 +67,13 @@ function checkAnswer() {
         qFeedback.textContent = 'Correct!';
         // technique for triggering audio per stack overflow : https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
         var audio = new Audio('audioFiles/andyBernardYes.mp3'); // sets variable for audio file, identifies it as audio element and provides source
-        audio.play(); //triggers audio to play
+        audio.volume = 0.50; //triggers audio to play
+        audio.play();
     } else {
         qFeedback.textContent = 'Wrong!';
         // technique for triggering audio per stack overflow : https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
         var audio = new Audio('audioFiles/michealScottNo.mp3'); // sets variable for audio file, identifies it as audio element and provides source
+        audio.volume = 0.50;
         audio.play(); //triggers audio to play
         if (timeTotal > 15) {
             timeTotal = timeTotal - 15;
