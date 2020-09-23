@@ -19,7 +19,7 @@ The user is welcomed by the home screen. The timer starts at 90 seconds and begi
 
 ![](./assets/img/home.jpg)
 
-As the user progresses through the quiz, they'll be asked a series of mulitple choice questions.
+As the user progresses through the quiz, they'll be asked a series of multiple choice questions.
 
 ![](./assets/img/question.jpg)
 

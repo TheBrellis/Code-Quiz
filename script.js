@@ -28,6 +28,18 @@ function timerStart() {
     }, 1000);
 }
 
+function createButtons(numChoices) {
+    for (var i = 0; i < numChoices; i++) {
+        var qChoices = document.createElement('buttons');
+        choicesDiv.appendChild(qChoices);
+        qChoices.setAttribute('data-type', 'choice');
+        qChoices.setAttribute('type', 'submit');
+        qChoices.setAttribute('class', 'col-md-6 d-block text-center btn-primary rounded m-2 p-2');
+        qChoices.textContent = questions[qCurrent].choices[i];
+    }
+
+}
+
 function nextQuestion() {
 
     if (qCurrent >= questions.length) { //stops nextQuestion from running when there is no question data
@@ -37,15 +49,10 @@ function nextQuestion() {
     // removes buttons from previous question
     choicesDiv.innerHTML = '';
     var numChoices = questions[qCurrent].choices.length;
-    //building new buttons
-    for (var i = 0; i < numChoices; i++) {
-        var qChoices = document.createElement('buttons');
-        choicesDiv.appendChild(qChoices);
-        qChoices.setAttribute('data-type', 'choice');
-        qChoices.setAttribute('type', 'submit');
-        qChoices.setAttribute('class', 'col-md-6 d-block text-center btn-primary rounded m-2 p-2');
-        qChoices.textContent = questions[qCurrent].choices[i];
-    }
+
+    // //building new buttons
+    createButtons(numChoices)
+
     qTitle.textContent = questions[qCurrent].title;
 
     //Adding Event Listeners for Buttons within the nextQuestion function (buttons don't exist until this function is run)
