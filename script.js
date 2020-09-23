@@ -52,7 +52,6 @@ function addEventListeners(questionButtons) {
 };
 
 function nextQuestion() {
-
     if (qCurrent >= questions.length) { //stops nextQuestion from running when there is no question data
         return;
     }
@@ -61,9 +60,10 @@ function nextQuestion() {
     choicesDiv.innerHTML = '';
     var numChoices = questions[qCurrent].choices.length;
 
-    // //building new buttons
-    createButtons(numChoices)
+    // building new question
     qTitle.textContent = questions[qCurrent].title;
+    createButtons(numChoices)
+
     //Adding Event Listeners for Buttons within the nextQuestion function (buttons don't exist until this function is run)
     qButtons = document.querySelectorAll('[data-type]');
     addEventListeners(qButtons);
@@ -160,9 +160,9 @@ function submitCurrentScore(user, highscore) {
         var x = 0;
     } else {
         var highscores = [];
-        var x = 1; // indentifier for when the highscores array is being created for the first time
+        var newHighScoreList = true; // indentifier for when the highscores array is being created for the first time
     }
-    if (x === 1) {
+    if (newHighScoreList) {
         highscores.push(currentScore);
     } else if (currentScore.score <= highscores[highscores.length - 1].score) {
         highscores.push(currentScore);
