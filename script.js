@@ -154,6 +154,7 @@ function submitCurrentScore(user, highscore) {
         score: highscore
     };
     //------------
+    //building highscores from local storage
     var highscoresJSON = localStorage.getItem('highscores')
     if (highscoresJSON) {
         var highscores = JSON.parse(highscoresJSON);
@@ -162,6 +163,8 @@ function submitCurrentScore(user, highscore) {
         var highscores = [];
         var newHighScoreList = true; // indentifier for when the highscores array is being created for the first time
     }
+
+    // adding in new high scores
     if (newHighScoreList) {
         highscores.push(currentScore);
     } else if (currentScore.score <= highscores[highscores.length - 1].score) {
