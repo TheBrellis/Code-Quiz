@@ -28,8 +28,8 @@ function timerStart() {
     }, 1000);
 }
 
-function createButtons(numChoices) {
-    for (var i = 0; i < numChoices; i++) {
+function createButtons(numberOfChoices) {
+    for (var i = 0; i < numberOfChoices; i++) {
         var qChoices = document.createElement('buttons');
         choicesDiv.appendChild(qChoices);
         qChoices.setAttribute('data-type', 'choice');
@@ -39,6 +39,17 @@ function createButtons(numChoices) {
     }
 
 }
+
+function addEventListeners(questionButtons) {
+
+    questionButtons.forEach(choice => {
+        choice.addEventListener('click', function (event) {
+            checkAnswer();
+            qCurrent++;
+            nextQuestion();
+        });
+    });
+};
 
 function nextQuestion() {
 
@@ -52,19 +63,10 @@ function nextQuestion() {
 
     // //building new buttons
     createButtons(numChoices)
-
     qTitle.textContent = questions[qCurrent].title;
-
     //Adding Event Listeners for Buttons within the nextQuestion function (buttons don't exist until this function is run)
     qButtons = document.querySelectorAll('[data-type]');
-
-    qButtons.forEach(choice => {
-        choice.addEventListener('click', function (event) {
-            checkAnswer();
-            qCurrent++;
-            nextQuestion();
-        });
-    });
+    addEventListeners(qButtons);
 };
 
 
